@@ -1,0 +1,26 @@
+To add a text placeholder at the bottom of each photo holder, you need to modify the HTML structure of each `div` that contains an image.
+
+### Using an Overlay
+
+The best way to add text at the bottom of the image is to use a **relative parent container** with a **nested absolute child container**. This allows you to position the text precisely over the image.
+
+Here's how to modify one of your photo holders:
+
+1.  **Add `relative` to the parent container:** Make the outer `div` (`<div class="bg-white rounded-3xl shadow-xl ...">`) a positioning context by adding the `relative` class.
+2.  **Add a new `div` for the text:** Inside this container, but after the `<img>` tag, add a new `div` to hold your text.
+3.  **Position the text `div`:** Give the new `div` the `absolute` class to position it relative to its parent. Then, use `bottom-0` to place it at the bottom and `left-0` and `right-0` (or `inset-x-0`) to stretch it across the width.
+4.  **Style the text `div`:** Add classes for padding (`p-4`), background color (`bg-gray-800`), and text color (`text-white`) to create a clear and readable overlay. You can also add a subtle opacity (`bg-opacity-75`) to keep the image visible underneath.
+
+### Modified Code
+
+Here's the modified code for one of the photo holders. You would apply the same changes to the other photo holders to ensure a consistent design.
+
+```html
+<div class="bg-white rounded-3xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 relative">
+    <img src="./PHOTOS/IMG-Ghusl room Construction.jpg" alt="Community Building" class="w-full h-auto object-cover">
+    <div class="absolute inset-x-0 bottom-0 bg-gray-800 bg-opacity-75 text-white p-4">
+        <h3 class="text-lg font-semibold">Ghusl Room Construction</h3>
+        <p class="text-sm mt-1">Building a new washroom facility for the community.</p>
+    </div>
+</div>
+```
